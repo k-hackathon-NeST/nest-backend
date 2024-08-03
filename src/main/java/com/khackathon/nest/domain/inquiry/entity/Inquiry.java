@@ -3,7 +3,7 @@ package com.khackathon.nest.domain.inquiry.entity;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
 import com.khackathon.nest.domain.shelter.domain.Shelter;
-import com.khackathon.nest.domain.staff.domain.Staff;
+import com.khackathon.nest.domain.staff.domain.Admin;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -74,7 +74,7 @@ public class Inquiry {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
-    private Staff staff;
+    private Admin admin;
 
     public static Inquiry toEntity(InquiryCreateRequest request, Shelter shelter) {
         Inquiry inquiry = new Inquiry();
@@ -93,10 +93,10 @@ public class Inquiry {
         return inquiry;
     }
 
-    public void updateReply(InquiryReplyRequest request, Staff staff) {
+    public void updateReply(InquiryReplyRequest request, Admin admin) {
         this.isAnswer = true;
         this.answerDate = LocalDateTime.now();
         this.answer = request.getAnswer();
-        this.staff = staff;
+        this.admin = admin;
     }
 }

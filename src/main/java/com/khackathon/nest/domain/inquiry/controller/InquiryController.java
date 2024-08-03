@@ -3,6 +3,7 @@ package com.khackathon.nest.domain.inquiry.controller;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
 import com.khackathon.nest.domain.inquiry.dto.response.InquiriesResponse;
+import com.khackathon.nest.domain.inquiry.dto.response.InquiryResponse;
 import com.khackathon.nest.domain.inquiry.service.InquiryService;
 import com.khackathon.nest.global.common.SuccessResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -48,10 +49,15 @@ public class InquiryController {
         return HttpStatus.NO_CONTENT;
     }
 
-
     @GetMapping("/all/{shelter-id}")
     public ResponseEntity<SuccessResponse<InquiriesResponse>> getAllBy(@PathVariable("shelter-id") Long shelterId) {
         return SuccessResponse.of(inquiryService.getAllBy(shelterId))
+                .asHttp(HttpStatus.OK);
+    }
+
+    @GetMapping("{inquiry-id}")
+    public ResponseEntity<SuccessResponse<InquiryResponse>> getBy(@PathVariable("inquiry-id") Long inquiryId) {
+        return SuccessResponse.of(inquiryService.getBy(inquiryId))
                 .asHttp(HttpStatus.OK);
     }
 }
