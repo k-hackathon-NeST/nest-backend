@@ -1,7 +1,9 @@
 package com.khackathon.nest.domain.inquiry.entity;
 
 import com.khackathon.nest.domain.inquiry.dto.InquiryCreateRequest;
+import com.khackathon.nest.domain.inquiry.dto.InquiryReplyRequest;
 import com.khackathon.nest.domain.shelter.domain.Shelter;
+import com.khackathon.nest.domain.staff.domain.Staff;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -69,6 +71,10 @@ public class Inquiry {
     @JoinColumn(name = "shelter_id")
     private Shelter shelter;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_id")
+    private Staff staff;
+
     public static Inquiry toEntity(InquiryCreateRequest request, Shelter shelter) {
         Inquiry inquiry = new Inquiry();
         inquiry.name = request.getName();
@@ -82,6 +88,7 @@ public class Inquiry {
         inquiry.password = request.getPassword();
         inquiry.askAt = LocalDateTime.now();
         inquiry.isAnswer = false;
+        inquiry.shelter = shelter;
         return inquiry;
     }
 }
