@@ -1,10 +1,14 @@
 package com.khackathon.nest.domain.inquiry.entity;
 
 import com.khackathon.nest.domain.inquiry.dto.InquiryCreateRequest;
+import com.khackathon.nest.domain.shelter.domain.Shelter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -61,7 +65,11 @@ public class Inquiry {
     @Column(name = "answer_date")
     private LocalDateTime answerDate;
 
-    public static Inquiry toEntity(InquiryCreateRequest request) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shelter_id")
+    private Shelter shelter;
+
+    public static Inquiry toEntity(InquiryCreateRequest request, Shelter shelter) {
         Inquiry inquiry = new Inquiry();
         inquiry.name = request.getName();
         inquiry.phoneNumber = request.getPhoneNumber();

@@ -14,6 +14,9 @@ import lombok.RequiredArgsConstructor;
 @Schema(description = "문의 글 작성 request")
 public class InquiryCreateRequest {
 
+    @NotNull
+    private final Long shelterId;
+
     @NotBlank
     private final String name;
 
@@ -45,4 +48,6 @@ public class InquiryCreateRequest {
 
     @NotBlank
     private final String password;
+
+
 }
