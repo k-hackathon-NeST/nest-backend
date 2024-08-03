@@ -60,16 +60,17 @@ public class Inquiry {
     private LocalDateTime askAt;
 
     @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shelter_id")
+    private Shelter shelter;
+
+    @NotNull
     private Boolean isAnswer;
 
     private String answer;
 
     @Column(name = "answer_date")
     private LocalDateTime answerDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shelter_id")
-    private Shelter shelter;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
@@ -90,5 +91,12 @@ public class Inquiry {
         inquiry.isAnswer = false;
         inquiry.shelter = shelter;
         return inquiry;
+    }
+
+    public void updateReply(String answer, Staff staff) {
+        this.isAnswer = true;
+        this.answerDate = LocalDateTime.now();
+        this.answer = answer;
+        this.staff = staff;
     }
 }
