@@ -1,5 +1,6 @@
-package com.khackathon.nest.domain.inquiry.domain;
+package com.khackathon.nest.domain.inquiry.dto;
 
+import com.khackathon.nest.domain.inquiry.entity.Inquiry;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.Builder;

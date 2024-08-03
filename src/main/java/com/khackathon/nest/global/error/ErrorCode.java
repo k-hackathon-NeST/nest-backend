@@ -19,7 +19,7 @@ public enum ErrorCode {
 
 
     // Inquiry
-    INVALID_INQUIRY(400, "I001", "문의글 요청 값이 유효하지 않습니다.");
+    GRADE_NOT_FOUND(404, "I001", "해당하는 grade가 존재하지 않습니다.");
 
 
 
