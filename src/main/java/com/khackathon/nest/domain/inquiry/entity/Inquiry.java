@@ -1,7 +1,7 @@
 package com.khackathon.nest.domain.inquiry.entity;
 
-import com.khackathon.nest.domain.inquiry.dto.InquiryCreateRequest;
-import com.khackathon.nest.domain.inquiry.dto.InquiryReplyRequest;
+import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
+import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
 import com.khackathon.nest.domain.shelter.domain.Shelter;
 import com.khackathon.nest.domain.staff.domain.Staff;
 import jakarta.persistence.Column;
@@ -93,10 +93,10 @@ public class Inquiry {
         return inquiry;
     }
 
-    public void updateReply(String answer, Staff staff) {
+    public void updateReply(InquiryReplyRequest request, Staff staff) {
         this.isAnswer = true;
         this.answerDate = LocalDateTime.now();
-        this.answer = answer;
+        this.answer = request.getAnswer();
         this.staff = staff;
     }
 }

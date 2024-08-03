@@ -1,4 +1,4 @@
-package com.khackathon.nest.domain.inquiry.dto;
+package com.khackathon.nest.domain.inquiry.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
