@@ -2,8 +2,6 @@ package com.khackathon.nest.domain.shelter.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -46,9 +44,8 @@ public class Shelter {
     @Column(name = "operation_hour", nullable = false)
     private String operationHour;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "protection_period", nullable = false)
-    private ProtectionPeriod protectionPeriod;
+    private String protectionPeriod;
 
     @Builder
     public Shelter(
@@ -61,7 +58,7 @@ public class Shelter {
         int currentResident,
         String phoneNumber,
         String operationHour,
-        ProtectionPeriod protectionPeriod
+        String protectionPeriod
     ) {
         this.id = id;
         this.name = name;
@@ -72,7 +69,7 @@ public class Shelter {
         this.currentResident = currentResident;
         this.phoneNumber = phoneNumber;
         this.operationHour = operationHour;
-        this.protectionPeriod =protectionPeriod;
+        this.protectionPeriod = protectionPeriod;
     }
 
 

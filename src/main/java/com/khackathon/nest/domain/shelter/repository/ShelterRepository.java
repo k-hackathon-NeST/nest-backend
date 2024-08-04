@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ShelterRepository extends JpaRepository<Shelter, Long> {
 
-    @Query(value = "SELECT s.shelter_id as id, s.name as name, s.address as address, s.description as description, " +
-        "s.capacity as capacity, s.current_resident as currentResident, s.phone_number as phoneNumber, " +
-        "s.operation_hour as operationHour, " +
+    @Query(value = "SELECT s.shelter_id as id, s.name as name, s.address as address, " +
+        "s.capacity as capacity, s.current_resident as currentResident, " +
+        "s.protection_period as protectionPeriod, " +
         "ST_Distance(s.point, :point) as distance " +
         "FROM shelter s " +
         "WHERE ST_DWithin(s.point, :point, 4000) " +

@@ -19,7 +19,7 @@ public enum ErrorCode {
 
 
     // Inquiry
-    GRADE_NOT_FOUND(404, "I001", "해당하는 grade가 존재하지 않습니다.");
+    GRADE_NOT_FOUND(404, "I001", "해당하는 grade가 존재하지 않습니다."),
 
 
 
@@ -31,7 +31,7 @@ public enum ErrorCode {
 
 
     // Shelter
-
+    PROTECTION_PERIOD_NOT_FOUND(404, "S001", "해당하는 protection period가 존재하지 않습니다.");
 
 
 
