@@ -4,9 +4,12 @@ public interface ShelterInfoMapping {
 
     Long getId();
     String getName();
-    String getAddress();
+    String getDescription();
     int getCapacity();
     int getCurrentResident();
-    String getProtectionPeriod();
+    String getPhoneNumber();
+    String getOperationHour();
+    String getProtectionPeriod();;
+    String getShelterType();
 
 }

@@ -47,6 +47,9 @@ public class Shelter {
     @Column(name = "protection_period", nullable = false)
     private String protectionPeriod;
 
+    @Column(name = "shelter_type", nullable = false)
+    private String shelterType;
+
     @Builder
     public Shelter(
         Long id,
@@ -58,7 +61,8 @@ public class Shelter {
         int currentResident,
         String phoneNumber,
         String operationHour,
-        String protectionPeriod
+        String protectionPeriod,
+        String shelterType
     ) {
         this.id = id;
         this.name = name;
@@ -70,6 +74,7 @@ public class Shelter {
         this.phoneNumber = phoneNumber;
         this.operationHour = operationHour;
         this.protectionPeriod = protectionPeriod;
+        this.shelterType = shelterType;
     }
 
 

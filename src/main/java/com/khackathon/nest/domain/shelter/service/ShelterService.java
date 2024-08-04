@@ -1,9 +1,11 @@
 package com.khackathon.nest.domain.shelter.service;
 
 import com.khackathon.nest.domain.shelter.dto.response.NearbyResponse;
+import com.khackathon.nest.domain.shelter.dto.response.ShelterResponse;
+import com.khackathon.nest.domain.shelter.exception.ShelterNotFoundException;
 import com.khackathon.nest.domain.shelter.repository.ShelterRepository;
 import com.khackathon.nest.domain.shelter.service.util.PointUtils;
-import com.khackathon.nest.domain.shelter.vo.ShelterInfoMapping;
+import com.khackathon.nest.domain.shelter.vo.ShelterSimpleInfoMapping;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,7 @@ public class ShelterService {
 
     private final ShelterRepository shelterRepository;
 
-    public NearbyResponse getNearby(
+    public NearbyResponse findNearbyBy(
         Double longitude,
         Double latitude
     ) {
@@ -24,8 +26,14 @@ public class ShelterService {
             latitude
         );
 
-        List<ShelterInfoMapping> shelters = shelterRepository.getNearby(point);
+        List<ShelterSimpleInfoMapping> shelters = shelterRepository.findNearbyBy(point);
 
         return NearbyResponse.of(shelters);
+    }
+
+    public ShelterResponse getBy(Long shelterId) {
+        return ShelterResponse.of(shelterRepository.getBy(shelterId)
+            .orElseThrow(ShelterNotFoundException::new)
+        );
     }
 }
