@@ -6,7 +6,7 @@ import com.khackathon.nest.global.error.ErrorCode;
 public class ProtectionPeriodNotFoundException extends BusinessException {
 
     public ProtectionPeriodNotFoundException() {
-        super(ErrorCode.GRADE_NOT_FOUND);
+        super(ErrorCode.PROTECTION_PERIOD_NOT_FOUND);
     }
 
 }

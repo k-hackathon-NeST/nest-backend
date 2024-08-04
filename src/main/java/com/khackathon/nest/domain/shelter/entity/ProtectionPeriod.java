@@ -8,8 +8,8 @@ import lombok.Getter;
 public enum ProtectionPeriod {
 
     TEMPORARY("임시"),
-    SHORTTERM("단기"),
-    MIDTOLONGTERM("중장기");
+    SHORT_TERM("단기"),
+    MID_TO_LONG_TERM("중장기");
 
     private final String protectionPeriodStr;
 
