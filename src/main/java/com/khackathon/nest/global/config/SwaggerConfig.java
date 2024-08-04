@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(title = "NeST",
                 description = "K-해커톤 NeST Api 문서",
                 version = "v1"),
-        servers = @Server(url = "localhost:8080", description = "개발 서버")
+        servers = @Server(url = "http://localhost:8080", description = "개발 서버")
 )
 @Configuration
 public class SwaggerConfig {
@@ -37,4 +37,16 @@ public class SwaggerConfig {
                 .pathsToMatch(paths)
                 .build();
     }
+
+    @Bean
+    public GroupedOpenApi shelterOpenApi() {
+        String[] paths = {"/shelters/**"};
+
+        return GroupedOpenApi
+            .builder()
+            .group("쉼터 API")
+            .pathsToMatch(paths)
+            .build();
+    }
+
 }
