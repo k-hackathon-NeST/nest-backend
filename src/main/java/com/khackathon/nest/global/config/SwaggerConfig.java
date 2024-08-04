@@ -29,7 +29,7 @@ public class SwaggerConfig {
 
     @Bean
     public GroupedOpenApi inquiryOpenApi() {
-        String[] paths = {"/inquiries/**"};
+        String[] paths = {"/api/inquiries/**"};
 
         return GroupedOpenApi
                 .builder()
@@ -40,7 +40,7 @@ public class SwaggerConfig {
 
     @Bean
     public GroupedOpenApi shelterOpenApi() {
-        String[] paths = {"/shelters/**"};
+        String[] paths = {"/api/shelters/**"};
 
         return GroupedOpenApi
             .builder()
