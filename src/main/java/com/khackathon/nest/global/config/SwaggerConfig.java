@@ -49,4 +49,15 @@ public class SwaggerConfig {
             .build();
     }
 
+    @Bean
+    public GroupedOpenApi OpenAIApi() {
+        String[] paths = {"/api/open-ai/**"};
+
+        return GroupedOpenApi
+            .builder()
+            .group("AI API")
+            .pathsToMatch(paths)
+            .build();
+    }
+
 }

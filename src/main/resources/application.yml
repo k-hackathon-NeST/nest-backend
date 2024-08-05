@@ -15,3 +15,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+openapi:
+  secret-key: ${OPEN_AI_SECRET_KEY}
