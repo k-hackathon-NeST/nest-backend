@@ -1,5 +1,7 @@
 package com.khackathon.nest.domain.admin.entity;
 
+import com.khackathon.nest.domain.admin.exception.RegionNotFoundException;
+import java.util.EnumSet;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,4 +16,11 @@ public enum Region {
     DAEJEON("대전광역시");
 
     private final String regionStr;
+
+    public static Region transRegionByStr(String regionStr) {
+        return EnumSet.allOf(Region.class).stream()
+                .filter(e -> e.getRegionStr().equals(regionStr))
+                .findAny()
+                .orElseThrow(RegionNotFoundException::new);
+    }
 }

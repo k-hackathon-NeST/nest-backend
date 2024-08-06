@@ -45,7 +45,8 @@ public enum ErrorCode {
 
 
     // Admin
-    REGION_NOT_FOUND(404, "A001", "해당하는 지역(소속)이 존재하지 않습니다.");
+    REGION_NOT_FOUND(404, "A001", "해당하는 지역(소속)이 존재하지 않습니다."),
+    ADMIN_NOT_FOUND(404, "A002", "로그인 정보에 해당하는 사용자가 존재하지 않습니다.");
 
 
 
