@@ -22,7 +22,7 @@ public class InquiryResponse {
     private final String content;
     @Schema(description = "답변이 없는 경우 null로 응답합니다.")
     private final String answer;
-    @Schema(description = "관계자 이름, 답변이 없는 경우 null로 응답합니다.")
+    @Schema(description = "답변 작성한 관계자 이름, 답변이 없는 경우 null로 응답합니다.")
     private final String adminName;
 
     public static InquiryResponse of(Inquiry inquiry) {
