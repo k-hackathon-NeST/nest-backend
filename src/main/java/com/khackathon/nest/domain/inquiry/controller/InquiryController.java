@@ -49,13 +49,13 @@ public class InquiryController {
         return HttpStatus.NO_CONTENT;
     }
 
-    @Operation(summary = "쉼터별 문의 글 조회 Api")
+    @Operation(summary = "관계자별(해당 쉼터) 문의 글 조회 Api")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200")
     })
-    @GetMapping("/all/{shelter-id}")
-    public ResponseEntity<SuccessResponse<InquiriesResponse>> getAllBy(@PathVariable("shelter-id") Long shelterId) {
-        return SuccessResponse.of(inquiryService.getAllBy(shelterId))
+    @GetMapping("/all/{admin-id}")
+    public ResponseEntity<SuccessResponse<InquiriesResponse>> getAllBy(@PathVariable("admin-id") Long adminId) {
+        return SuccessResponse.of(inquiryService.getAllBy(adminId))
                 .asHttp(HttpStatus.OK);
     }
 

@@ -36,7 +36,9 @@ public class InquiryService {
         inquiry.updateReply(request, admin);
     }
 
-    public InquiriesResponse getAllBy(Long shelterId) {
+    public InquiriesResponse getAllBy(Long adminId) {
+        Admin admin = adminRepository.getReferenceById(adminId);
+        Long shelterId = admin.getShelter().getId();
         return InquiriesResponse.of(inquiryRepository.findByShelterId(shelterId));
     }
 
