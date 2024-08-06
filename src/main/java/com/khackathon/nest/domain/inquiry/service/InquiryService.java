@@ -3,13 +3,14 @@ package com.khackathon.nest.domain.inquiry.service;
 import com.khackathon.nest.domain.admin.entity.Admin;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
-import com.khackathon.nest.domain.inquiry.dto.response.InquiriesResponse;
 import com.khackathon.nest.domain.inquiry.dto.response.InquiryResponse;
+import com.khackathon.nest.domain.inquiry.dto.response.SimpleInquiryResponse;
 import com.khackathon.nest.domain.inquiry.entity.Inquiry;
 import com.khackathon.nest.domain.inquiry.repository.InquiryRepository;
 import com.khackathon.nest.domain.shelter.entity.Shelter;
 import com.khackathon.nest.domain.shelter.repository.ShelterRepository;
 import com.khackathon.nest.domain.admin.repository.AdminRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,10 +37,18 @@ public class InquiryService {
         inquiry.updateReply(request, admin);
     }
 
-    public InquiriesResponse getAllBy(Long adminId) {
+    public List<InquiryResponse> getBy(String phoneNumber, String password) {
+        return inquiryRepository.findByPhoneNumberAndPassword(phoneNumber, password).stream()
+                .map(InquiryResponse::of)
+                .toList();
+    }
+
+    public List<SimpleInquiryResponse> getSimpleBy(Long adminId) {
         Admin admin = adminRepository.getReferenceById(adminId);
         Long shelterId = admin.getShelter().getId();
-        return InquiriesResponse.of(inquiryRepository.findByShelterId(shelterId));
+        return inquiryRepository.findByShelterId(shelterId).stream()
+                .map(SimpleInquiryResponse::of)
+                .toList();
     }
 
     public InquiryResponse getBy(Long inquiryId) {

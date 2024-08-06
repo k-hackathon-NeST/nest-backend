@@ -2,14 +2,15 @@ package com.khackathon.nest.domain.inquiry.controller;
 
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
-import com.khackathon.nest.domain.inquiry.dto.response.InquiriesResponse;
 import com.khackathon.nest.domain.inquiry.dto.response.InquiryResponse;
+import com.khackathon.nest.domain.inquiry.dto.response.SimpleInquiryResponse;
 import com.khackathon.nest.domain.inquiry.service.InquiryService;
 import com.khackathon.nest.global.common.SuccessResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,13 +50,23 @@ public class InquiryController {
         return HttpStatus.NO_CONTENT;
     }
 
+    @Operation(summary = "작성자별(청소년) 문의 글 조회 Api", description = "전화번호와 비밀번호로 식별된 글 조회")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "해당 전화번호와 비밀번호 조건에 맞는 모든 문의 글 반환(없을 시 빈 배열 반환)")
+    })
+    @GetMapping("/{phone-number}/{password}")
+    public ResponseEntity<SuccessResponse<List<InquiryResponse>>> getBy(@PathVariable("phone-number") String phoneNumber, @PathVariable("password") String password) {
+        return SuccessResponse.of(inquiryService.getBy(phoneNumber, password))
+                .asHttp(HttpStatus.OK);
+    }
+
     @Operation(summary = "관계자별(해당 쉼터) 문의 글 조회 Api", description = "관계자 pk로 식별된 쉼터의 글 조회")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200")
     })
-    @GetMapping("/all/{admin-id}")
-    public ResponseEntity<SuccessResponse<InquiriesResponse>> getAllBy(@PathVariable("admin-id") Long adminId) {
-        return SuccessResponse.of(inquiryService.getAllBy(adminId))
+    @GetMapping("/{admin-id}")
+    public ResponseEntity<SuccessResponse<List<SimpleInquiryResponse>>> getSimpleBy(@PathVariable("admin-id") Long adminId) {
+        return SuccessResponse.of(inquiryService.getSimpleBy(adminId))
                 .asHttp(HttpStatus.OK);
     }
 

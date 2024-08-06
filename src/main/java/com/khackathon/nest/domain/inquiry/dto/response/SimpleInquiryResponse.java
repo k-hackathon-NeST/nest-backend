@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 @Builder(access = AccessLevel.PRIVATE)
-public class SimpleInquiry {
+public class SimpleInquiryResponse {
     @Schema(description = "문의 글 id(pk)")
     private final Long inquiryId;
     private final String name;
@@ -19,8 +19,8 @@ public class SimpleInquiry {
     private final LocalDateTime askAt;
     private final Boolean isAnswer;
 
-    public static SimpleInquiry of(Inquiry inquiry) {
-        return SimpleInquiry.builder()
+    public static SimpleInquiryResponse of(Inquiry inquiry) {
+        return SimpleInquiryResponse.builder()
                 .inquiryId(inquiry.getId())
                 .name(inquiry.getName())
                 .title(inquiry.getTitle())

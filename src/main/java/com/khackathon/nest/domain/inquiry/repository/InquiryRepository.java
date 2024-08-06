@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InquiryRepository extends JpaRepository<Inquiry, Long>{
     List<Inquiry> findByShelterId(Long shelterId);
+    List<Inquiry> findByPhoneNumberAndPassword(String phoneNumber, String password);
 }
