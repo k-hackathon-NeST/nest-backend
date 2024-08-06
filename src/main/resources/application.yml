@@ -18,3 +18,8 @@ spring:
 
 openapi:
   secret-key: ${OPEN_AI_SECRET_KEY}
+
+nurigo:
+  url: ${NURIGO_URL}
+  api-key: ${NURIGO_API_KEY}
+  secret-key: ${NURIGO_SECRET_KEY}
