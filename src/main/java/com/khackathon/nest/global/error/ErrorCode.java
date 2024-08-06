@@ -33,7 +33,7 @@ public enum ErrorCode {
     // Shelter
     PROTECTION_PERIOD_NOT_FOUND(404, "S001", "해당하는 보호기간이 존재하지 않습니다."),
     SHELTER_TYPE_NOT_FOUND(404, "S002", "해당하는 쉼터의 type이 존재하지 않습니다."),
-    SHELTER_NOT_FOUND(404, "S003", "해당하는 쉼터가 존재하지 않습니다.");
+    SHELTER_NOT_FOUND(404, "S003", "해당하는 쉼터가 존재하지 않습니다."),
 
 
 
@@ -44,8 +44,8 @@ public enum ErrorCode {
 
 
 
-    // Staff
-
+    // Admin
+    REGION_NOT_FOUND(404, "A001", "해당하는 지역(소속)이 존재하지 않습니다.");
 
 
 
