@@ -10,6 +10,7 @@ import com.khackathon.nest.domain.inquiry.repository.InquiryRepository;
 import com.khackathon.nest.domain.shelter.entity.Shelter;
 import com.khackathon.nest.domain.shelter.repository.ShelterRepository;
 import com.khackathon.nest.domain.admin.repository.AdminRepository;
+import com.khackathon.nest.infra.nurigo.NurigoService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class InquiryService {
     private final InquiryRepository inquiryRepository;
     private final AdminRepository adminRepository;
     private final ShelterRepository shelterRepository;
+    private final NurigoService nurigoService;
 
     @Transactional
     public void create(InquiryCreateRequest request) {
@@ -35,6 +37,7 @@ public class InquiryService {
         Inquiry inquiry = inquiryRepository.getReferenceById(request.getInquiryId());
         Admin admin = adminRepository.getReferenceById(request.getAdminId());
         inquiry.updateReply(request, admin);
+        nurigoService.sendMessage(inquiry);
     }
 
     public List<InquiryResponse> getBy(String phoneNumber, String password) {

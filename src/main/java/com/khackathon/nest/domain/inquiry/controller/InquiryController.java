@@ -42,7 +42,7 @@ public class InquiryController {
 
     @Operation(summary = "문의 글 답변 Api", description = "관계자가 문의 글에 답변")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "문의 글 답변 저장 후 Http 상태코드(204)만 반환")
+            @ApiResponse(responseCode = "204", description = "문의 글 답변 저장 및 메시지 발송 후 Http 상태코드(204)만 반환")
     })
     @PatchMapping
     public HttpStatus updateReply(@RequestBody @Valid InquiryReplyRequest request) {
@@ -64,7 +64,7 @@ public class InquiryController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200")
     })
-    @GetMapping("/{admin-id}")
+    @GetMapping("/simple/{admin-id}")
     public ResponseEntity<SuccessResponse<List<SimpleInquiryResponse>>> getSimpleBy(@PathVariable("admin-id") Long adminId) {
         return SuccessResponse.of(inquiryService.getSimpleBy(adminId))
                 .asHttp(HttpStatus.OK);
@@ -74,7 +74,7 @@ public class InquiryController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200")
     })
-    @GetMapping("{inquiry-id}")
+    @GetMapping("/{inquiry-id}")
     public ResponseEntity<SuccessResponse<InquiryResponse>> getBy(@PathVariable("inquiry-id") Long inquiryId) {
         return SuccessResponse.of(inquiryService.getBy(inquiryId))
                 .asHttp(HttpStatus.OK);
