@@ -1,4 +1,4 @@
-package com.khackathon.nest.domain.admin.domain;
+package com.khackathon.nest.domain.admin.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

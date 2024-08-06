@@ -1,4 +1,4 @@
-package com.khackathon.nest.domain.admin.domain;
+package com.khackathon.nest.domain.admin.entity;
 
 import com.khackathon.nest.domain.shelter.entity.Shelter;
 import jakarta.persistence.Entity;
