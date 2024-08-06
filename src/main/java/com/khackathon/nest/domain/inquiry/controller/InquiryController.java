@@ -49,7 +49,7 @@ public class InquiryController {
         return HttpStatus.NO_CONTENT;
     }
 
-    @Operation(summary = "관계자별(해당 쉼터) 문의 글 조회 Api")
+    @Operation(summary = "관계자별(해당 쉼터) 문의 글 조회 Api", description = "관계자 pk로 식별된 쉼터의 글 조회")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200")
     })
