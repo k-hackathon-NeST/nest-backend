@@ -1,15 +1,15 @@
 package com.khackathon.nest.domain.inquiry.service;
 
+import com.khackathon.nest.domain.admin.domain.Admin;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
 import com.khackathon.nest.domain.inquiry.dto.response.InquiriesResponse;
 import com.khackathon.nest.domain.inquiry.dto.response.InquiryResponse;
 import com.khackathon.nest.domain.inquiry.entity.Inquiry;
 import com.khackathon.nest.domain.inquiry.repository.InquiryRepository;
-import com.khackathon.nest.domain.shelter.domain.Shelter;
+import com.khackathon.nest.domain.shelter.entity.Shelter;
 import com.khackathon.nest.domain.shelter.repository.ShelterRepository;
-import com.khackathon.nest.domain.staff.domain.Admin;
-import com.khackathon.nest.domain.staff.repository.StaffRepository;
+import com.khackathon.nest.domain.admin.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class InquiryService {
 
     private final InquiryRepository inquiryRepository;
-    private final StaffRepository staffRepository;
+    private final AdminRepository adminRepository;
     private final ShelterRepository shelterRepository;
 
     @Transactional
@@ -32,7 +32,7 @@ public class InquiryService {
     @Transactional
     public void updateReply(InquiryReplyRequest request) {
         Inquiry inquiry = inquiryRepository.getReferenceById(request.getInquiryId());
-        Admin admin = staffRepository.getReferenceById(request.getAdminId());
+        Admin admin = adminRepository.getReferenceById(request.getAdminId());
         inquiry.updateReply(request, admin);
     }
 

@@ -1,9 +1,9 @@
 package com.khackathon.nest.domain.inquiry.entity;
 
+import com.khackathon.nest.domain.admin.domain.Admin;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryCreateRequest;
 import com.khackathon.nest.domain.inquiry.dto.request.InquiryReplyRequest;
-import com.khackathon.nest.domain.shelter.domain.Shelter;
-import com.khackathon.nest.domain.staff.domain.Admin;
+import com.khackathon.nest.domain.shelter.entity.Shelter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
