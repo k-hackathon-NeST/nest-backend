@@ -15,7 +15,7 @@ public class SimpleInquiry {
     @Schema(description = "문의 글 id(pk)")
     private final Long inquiryId;
     private final String name;
-    private final String content;
+    private final String title;
     private final LocalDateTime askAt;
     private final Boolean isAnswer;
 
@@ -23,7 +23,7 @@ public class SimpleInquiry {
         return SimpleInquiry.builder()
                 .inquiryId(inquiry.getId())
                 .name(inquiry.getName())
-                .content(inquiry.getContent())
+                .title(inquiry.getTitle())
                 .askAt(inquiry.getAskAt())
                 .isAnswer(inquiry.getIsAnswer())
                 .build();

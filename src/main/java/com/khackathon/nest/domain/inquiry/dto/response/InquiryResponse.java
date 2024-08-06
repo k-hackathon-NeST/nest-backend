@@ -15,6 +15,7 @@ public class InquiryResponse {
     @Schema(description = "문의자 이름")
     private final String inquirerName;
     private final String phoneNumber;
+    private final LocalDate birthDate;
     private final String grade;
     private final LocalDate admissionDate;
     private final LocalDate dischargeDate;
@@ -29,6 +30,7 @@ public class InquiryResponse {
         InquiryResponse.InquiryResponseBuilder builder = InquiryResponse.builder()
                 .inquirerName(inquiry.getName())
                 .phoneNumber(inquiry.getPhoneNumber())
+                .birthDate(inquiry.getBirthDate())
                 .grade(inquiry.getGrade())
                 .admissionDate(inquiry.getAdmissionDate())
                 .dischargeDate(inquiry.getDischargeDate())
