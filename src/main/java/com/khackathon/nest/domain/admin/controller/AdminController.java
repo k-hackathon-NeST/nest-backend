@@ -21,6 +21,7 @@ public class AdminController {
     @Operation(summary = "관계자 로그인 Api")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "로그인 성공 시 상태코드(200)만 반환"),
+            @ApiResponse(responseCode = "404", description = "A001: 해당하는 지역(소속)이 존재하지 않습니다."),
             @ApiResponse(responseCode = "404", description = "A002: 로그인 정보에 해당하는 사용자가 존재하지 않습니다.")
     })
     @GetMapping("/{region}/{loginId}")

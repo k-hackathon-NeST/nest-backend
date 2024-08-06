@@ -31,7 +31,7 @@ public class InquiryController {
     @Operation(summary = "문의 글 작성 Api", description = "청소년이 문의 글을 작성")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "문의 글 저장 후 Http 상태 코드(201)만 반환"),
-            @ApiResponse(responseCode = "404", description = "요청에 해당하는 grade가 존재하지 않습니다.")
+            @ApiResponse(responseCode = "404", description = "I001: 요청에 해당하는 grade가 존재하지 않습니다.")
     })
     @PostMapping
     public HttpStatus create(@RequestBody @Valid InquiryCreateRequest request) {
