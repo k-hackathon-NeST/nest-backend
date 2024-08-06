@@ -7,7 +7,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +29,17 @@ public class AdminController {
     @GetMapping("/{region}/{loginId}")
     public HttpStatus login(@PathVariable String region, @PathVariable String loginId) {
         adminService.login(region, loginId);
+        return HttpStatus.OK;
+    }
+
+    @Operation(summary = "토큰 저장 Api")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "성공 시 상태코드(200)만 반환")
+    })
+    @PatchMapping("/token/{admin-id}")
+    public HttpStatus updateFcmToken(@PathVariable("admin-id") Long adminId,
+                                     @RequestBody String token) {
+        adminService.updateFcmToken(adminId, token);
         return HttpStatus.OK;
     }
 }

@@ -7,6 +7,7 @@ import com.khackathon.nest.domain.inquiry.dto.response.InquiryResponse;
 import com.khackathon.nest.domain.inquiry.dto.response.SimpleInquiryResponse;
 import com.khackathon.nest.domain.inquiry.entity.Inquiry;
 import com.khackathon.nest.domain.inquiry.repository.InquiryRepository;
+import com.khackathon.nest.domain.notification.NotificationService;
 import com.khackathon.nest.domain.shelter.entity.Shelter;
 import com.khackathon.nest.domain.shelter.repository.ShelterRepository;
 import com.khackathon.nest.domain.admin.repository.AdminRepository;
@@ -25,11 +26,13 @@ public class InquiryService {
     private final AdminRepository adminRepository;
     private final ShelterRepository shelterRepository;
     private final NurigoService nurigoService;
+    private final NotificationService notificationService;
 
     @Transactional
     public void create(InquiryCreateRequest request) {
         Shelter shelter = shelterRepository.getReferenceById(request.getShelterId());
-        inquiryRepository.save(Inquiry.toEntity(request, shelter));
+        Inquiry inquiry = inquiryRepository.save(Inquiry.toEntity(request, shelter));
+        notificationService.sendToAdmins(shelter, inquiry);
     }
 
     @Transactional
