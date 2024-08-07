@@ -45,10 +45,10 @@ public class Shelter {
     private String operationHour;
 
     @Column(name = "protection_period", nullable = false)
-    private String protectionPeriod;
+    private ProtectionPeriod protectionPeriod;
 
     @Column(name = "shelter_type", nullable = false)
-    private String shelterType;
+    private ShelterType shelterType;
 
     @Builder
     public Shelter(
@@ -61,8 +61,8 @@ public class Shelter {
         int currentResident,
         String phoneNumber,
         String operationHour,
-        String protectionPeriod,
-        String shelterType
+        ProtectionPeriod protectionPeriod,
+        ShelterType shelterType
     ) {
         this.id = id;
         this.name = name;
@@ -77,5 +77,24 @@ public class Shelter {
         this.shelterType = shelterType;
     }
 
+    public void transInfo(
+        String name,
+        String description,
+        int capacity,
+        int currentResident,
+        String phoneNumber,
+        String operationHour,
+        ProtectionPeriod protectionPeriod,
+        ShelterType shelterType
+    ) {
+        this.name = name;
+        this.description = description;
+        this.capacity = capacity;
+        this.currentResident = currentResident;
+        this.phoneNumber = phoneNumber;
+        this.operationHour = operationHour;
+        this.protectionPeriod = protectionPeriod;
+        this.shelterType = shelterType;
+    }
 
 }
