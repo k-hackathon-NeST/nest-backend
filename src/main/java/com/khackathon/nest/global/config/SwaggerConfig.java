@@ -50,6 +50,17 @@ public class SwaggerConfig {
     }
 
     @Bean
+    public GroupedOpenApi shelterImageOpenApi() {
+        String[] paths = {"/api/shelter-images/**"};
+
+        return GroupedOpenApi
+            .builder()
+            .group("쉼터 이미지 API")
+            .pathsToMatch(paths)
+            .build();
+    }
+
+    @Bean
     public GroupedOpenApi OpenAIApi() {
         String[] paths = {"/api/open-ai/**"};
 

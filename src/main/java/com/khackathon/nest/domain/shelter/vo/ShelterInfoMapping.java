@@ -9,7 +9,7 @@ public interface ShelterInfoMapping {
     int getCurrentResident();
     String getPhoneNumber();
     String getOperationHour();
-    String getProtectionPeriod();;
+    String getProtectionPeriod();
     String getShelterType();
 
 }

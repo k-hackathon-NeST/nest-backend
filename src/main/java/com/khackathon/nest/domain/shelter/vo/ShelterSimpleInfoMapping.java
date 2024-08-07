@@ -8,5 +8,6 @@ public interface ShelterSimpleInfoMapping {
     int getCapacity();
     int getCurrentResident();
     String getProtectionPeriod();
+    String getImageCode();
 
 }

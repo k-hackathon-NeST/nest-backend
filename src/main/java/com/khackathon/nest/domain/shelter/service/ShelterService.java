@@ -9,6 +9,7 @@ import com.khackathon.nest.domain.shelter.entity.ProtectionPeriod;
 import com.khackathon.nest.domain.shelter.entity.Shelter;
 import com.khackathon.nest.domain.shelter.entity.ShelterType;
 import com.khackathon.nest.domain.shelter.exception.ShelterNotFoundException;
+import com.khackathon.nest.domain.shelter.repository.ShelterImageRepository;
 import com.khackathon.nest.domain.shelter.repository.ShelterRepository;
 import com.khackathon.nest.domain.shelter.service.util.PointUtils;
 import com.khackathon.nest.domain.shelter.vo.ShelterSimpleInfoMapping;
@@ -20,10 +21,12 @@ import org.locationtech.jts.geom.Point;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ShelterService {
 
     private final ShelterRepository shelterRepository;
+    private final ShelterImageRepository shelterImageRepository;
     private final AdminRepository adminRepository;
 
     public NearbyResponse findNearbyBy(
@@ -51,8 +54,11 @@ public class ShelterService {
     }
 
     private ShelterResponse getByShelterId(Long shelterId){
+        Shelter shelter = shelterRepository.getReferenceById(shelterId);
+
         return ShelterResponse.of(shelterRepository.getBy(shelterId)
-            .orElseThrow(ShelterNotFoundException::new)
+            .orElseThrow(ShelterNotFoundException::new),
+            shelterImageRepository.findByShelter(shelter)
         );
     }
 

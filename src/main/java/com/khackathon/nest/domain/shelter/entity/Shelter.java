@@ -2,6 +2,7 @@ package com.khackathon.nest.domain.shelter.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -16,7 +17,7 @@ import org.locationtech.jts.geom.Point;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Shelter {
 
-    @Id
+    @Id @GeneratedValue
     @Column(name = "shelter_id")
     private Long id;
 

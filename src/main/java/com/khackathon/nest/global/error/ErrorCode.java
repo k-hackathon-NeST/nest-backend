@@ -34,6 +34,7 @@ public enum ErrorCode {
     PROTECTION_PERIOD_NOT_FOUND(404, "S001", "해당하는 보호기간이 존재하지 않습니다."),
     SHELTER_TYPE_NOT_FOUND(404, "S002", "해당하는 쉼터의 type이 존재하지 않습니다."),
     SHELTER_NOT_FOUND(404, "S003", "해당하는 쉼터가 존재하지 않습니다."),
+    IMAGE_TYPE_NOT_FOUND(404, "S004", "해당하는 이미지 type이 존재하지 않습니다."),
 
 
 
