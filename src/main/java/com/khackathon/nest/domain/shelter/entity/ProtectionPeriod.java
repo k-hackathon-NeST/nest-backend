@@ -9,7 +9,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ProtectionPeriod {
 
-    TEMPORARY("임시"),
+    TEMPORARY("일시"),
     SHORT_TERM("단기"),
     MID_TO_LONG_TERM("중장기");
 
