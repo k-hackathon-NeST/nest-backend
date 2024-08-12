@@ -21,7 +21,7 @@ public interface ShelterRepository extends JpaRepository<Shelter, Long> {
         "ST_Distance(s.point, :point) as distance " +
         "FROM shelter s " +
         "LEFT JOIN shelter_image si ON s.shelter_id = si.shelter_id AND si.image_type = 'main' " +
-        "WHERE ST_DWithin(s.point, :point, 4000) " +
+        "WHERE ST_DWithin(s.point, :point, 5000) " +
         "ORDER BY distance ASC " +
         "LIMIT 5", nativeQuery = true)
     List<ShelterSimpleInfoMapping> findNearbyBy(@Param("point") Point point);
