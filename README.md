@@ -1,5 +1,5 @@
 # 🪺NeST(Need Shelter Today)
-- 가출 청소년을 위한 통합 쉼터 플랫폼
+- 가출 청소년을 위한 통합 쉼터 플랫폼 앱
 - 2024 k-HACKATHON 본선 진출작
 
 <br>
